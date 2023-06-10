@@ -1,6 +1,11 @@
 from flask import Flask, request, send_file
 import os
 from pytube import YouTube
+import requests
+import certifi
+import os
+
+os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
 
 app = Flask(__name__)
 
@@ -13,6 +18,8 @@ class Youtube:
         new_file = base + '.mp3'
         os.rename(out_file, new_file)
         return new_file
+    
+    
 
 y = Youtube()
 
@@ -25,9 +32,9 @@ def index():
         return send_file(file_path, as_attachment=True)
     return '''
         <form method="post">
-            Enter youtube video link: <input type="text" name="link">
+            Enter youtube video link: <input type="text" name="link"><br>
+            Enter the path to download the file: <input type="text" name="path"><br>
             <input type="submit" value="Download">
-            Enter the path to download the file: <input type="text" name="path">
         </form>
     '''
 
