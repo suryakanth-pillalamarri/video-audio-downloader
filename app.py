@@ -4,8 +4,8 @@ from pytube import YouTube
 import requests
 import certifi
 import os
-
-os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
+#removing uncessarey lines
+#os.environ['REQUESTS_CA_BUNDLE'] = certifi.where()
 
 app = Flask(__name__)
 
