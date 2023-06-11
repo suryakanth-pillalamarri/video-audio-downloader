@@ -15,6 +15,15 @@ y=Youtube()
 link=input("Enter youtube Video link :")
 y.video_downloader(link)
 
+import pkg_resources
+
+try:
+    flask_version = pkg_resources.get_distribution("flask").version
+    pytube_version = pkg_resources.get_distribution("pytube").version
+    print(f"flask version: {flask_version}")
+    print(f"pytube version: {pytube_version}")
+except pkg_resources.DistributionNotFound:
+    print("pytube is not installed")
 
 
 
